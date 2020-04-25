@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on 三日坊主のご乱心</title>
+    <link>/tags/r/</link>
+    <description>Recent content in R on 三日坊主のご乱心</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>@nowaai</copyright>
+    <lastBuildDate>Sun, 26 Apr 2020 00:04:55 +0900</lastBuildDate>
+    
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rの自作パッケージ内で依存パッケージを読み込む方法（Rで顔文字演算子）</title>
+      <link>/posts/r-operator/</link>
+      <pubDate>Sun, 26 Apr 2020 00:04:55 +0900</pubDate>
+      
+      <guid>/posts/r-operator/</guid>
+      <description>今回はRで顔文字演算子を作ることができる話&amp;hellip;ではなく、Rの自作パッケージ内でどうやってパッケージを読み込むかについての話である。 Rでパッケージを自作していると、自作パッケージ内で依存パッ</description>
+    </item>
+    
+  </channel>
+</rss>

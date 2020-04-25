@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>三日坊主のご乱心</title>
+    <link>/</link>
+    <description>Recent content on 三日坊主のご乱心</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>@nowaai</copyright>
+    <lastBuildDate>Wed, 01 Jan 2020 22:37:52 +0900</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rの自作パッケージ内で依存パッケージを読み込む方法（Rで顔文字演算子）</title>
+      <link>/posts/r-operator/</link>
+      <pubDate>Sun, 26 Apr 2020 00:04:55 +0900</pubDate>
+      
+      <guid>/posts/r-operator/</guid>
+      <description>今回はRで顔文字演算子を作ることができる話&amp;hellip;ではなく、Rの自作パッケージ内でどうやってパッケージを読み込むかについての話である。 Rでパッケージを自作していると、自作パッケージ内で依存パッ</description>
+    </item>
+    
+    <item>
+      <title>カリー化した関数に型ヒントを与える</title>
+      <link>/posts/curry/</link>
+      <pubDate>Thu, 02 Apr 2020 22:37:52 +0900</pubDate>
+      
+      <guid>/posts/curry/</guid>
+      <description>Pythonの型ヒントに慣れるために、カリー化した関数に型ヒントを与えるというタスクをやってみる。 ちなみに、カリー化とは、複数の引数をとる関数を、一つの引数だけをとる関数のチェーンに変換する操作のこと</description>
+    </item>
+    
+    <item>
+      <title>Pythonでイミュータブルオブジェクト</title>
+      <link>/posts/immutable/</link>
+      <pubDate>Wed, 25 Mar 2020 22:37:52 +0900</pubDate>
+      
+      <guid>/posts/immutable/</guid>
+      <description>Pythonでコレクションを扱っていると、ハッシュ可能なオブジェクトの使用を求められることがままある。 例えば、辞書のキーはハッシュ可能なオブジェクトでないといけないし、集合の要素もハッシュ可能でなけれ</description>
+    </item>
+    
+    <item>
+      <title>Shadow Tactics 雑感</title>
+      <link>/posts/shadowtactics/</link>
+      <pubDate>Wed, 26 Feb 2020 03:01:11 +0900</pubDate>
+      
+      <guid>/posts/shadowtactics/</guid>
+      <description>一体、何回死んだだろうか。 バレないと思って脇を横切ろうとしたところを発見され、なぶり殺しにされる。 見られてないと高をくくってやった殺しを目撃され、逆襲を受ける。 気づきもしなかった町人にチクられて、思わ</description>
+    </item>
+    
+    <item>
+      <title>場当たり的な例外処理</title>
+      <link>/posts/exception/</link>
+      <pubDate>Fri, 21 Feb 2020 22:37:52 +0900</pubDate>
+      
+      <guid>/posts/exception/</guid>
+      <description>定期的に動かすので、ある程度きちんとプログラムを書かないといけないけど、そんなに丁寧に例外処理を書いている余裕はないぞというケースがある。 そういう時、実行スクリプトでは、このように雑に例外処理を行うこ</description>
+    </item>
+    
+    <item>
+      <title>Control雑感</title>
+      <link>/posts/control/</link>
+      <pubDate>Mon, 10 Feb 2020 02:50:37 +0900</pubDate>
+      
+      <guid>/posts/control/</guid>
+      <description>空中浮遊したさに気にはなっていたが、去年の暮れに日本語字幕版が発売されたということで、このタイミングでDLしてプレイしてみた。 このゲームはストーリーを楽しむものなのだろうと勝手に思い込んでいたのだが、</description>
+    </item>
+    
+    <item>
+      <title>Pythonで独自のロギングハンドラ</title>
+      <link>/posts/logging/</link>
+      <pubDate>Sat, 01 Feb 2020 22:37:52 +0900</pubDate>
+      
+      <guid>/posts/logging/</guid>
+      <description>Pythonのloggingを利用していると、独自のハンドラを作りたくなるときがある。 そういう時には、すでにloggingに定義されているハンドラのコードを参考にすることができる。 例えば、loggin</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Wed, 01 Jan 2020 22:37:52 +0900</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Author nowaai SNS Twitter Github Attribute 都内 川沿い プログラマ 三十路 三日坊主 三間飛車 銀縁眼鏡 Python / Rust Frostpunkの緊張感 ジャズ喫茶での睡眠 オーギーヨッチャ</description>
+    </item>
+    
+  </channel>
+</rss>

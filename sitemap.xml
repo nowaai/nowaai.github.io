@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/r/</loc>
+    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/r-operator/</loc>
+    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/python/</loc>
+    <lastmod>2020-04-02T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/curry/</loc>
+    <lastmod>2020-04-02T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/immutable/</loc>
+    <lastmod>2020-03-25T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/shadowtactics/</loc>
+    <lastmod>2020-02-26T03:01:11+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/%E3%82%B2%E3%83%BC%E3%83%A0/</loc>
+    <lastmod>2020-02-26T03:01:11+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/exception/</loc>
+    <lastmod>2020-02-21T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/control/</loc>
+    <lastmod>2020-02-10T02:50:37+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/logging/</loc>
+    <lastmod>2020-02-01T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-01-01T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-01-01T22:37:52+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+</urlset>

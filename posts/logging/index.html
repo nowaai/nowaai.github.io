@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Pythonで独自のロギングハンドラ :: 三日坊主のご乱心</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Pythonのloggingを利用していると、独自のハンドラを作りたくなるときがある。 そういう時には、すでにloggingに定義されているハンドラのコードを参考にすることができる。 例えば、loggin" />
+<meta name="keywords" content="プログラミング、ゲーム、ご乱心" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/logging/" />
+
+
+
+
+<link rel="stylesheet" href="/assets/style.css">
+
+  <link rel="stylesheet" href="/assets/green.css">
+
+
+
+<link rel="stylesheet" href="/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+
+  <link rel="shortcut icon" href="/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  <meta name="twitter:site" content="" />
+
+<meta name="twitter:creator" content="nowaai" />
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Pythonで独自のロギングハンドラ :: 三日坊主のご乱心">
+<meta property="og:description" content="Pythonのloggingを利用していると、独自のハンドラを作りたくなるときがある。 そういう時には、すでにloggingに定義されているハンドラのコードを参考にすることができる。 例えば、loggin" />
+<meta property="og:url" content="/posts/logging/" />
+<meta property="og:site_name" content="Pythonで独自のロギングハンドラ" />
+
+  
+    <meta property="og:image" content="/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-02-01 22:37:52 &#43;0900 JST" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    三日坊主のご乱心
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="/posts/logging/">Pythonで独自のロギングハンドラ</a></h1>
+  <div class="post-meta">
+      
+    <span class="post-date">
+      2020-02-01
+    </span>
+    
+    
+    <span class="post-author">::
+      nowaai
+    </span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="/tags/python/">Python</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Pythonのloggingを利用していると、独自のハンドラを作りたくなるときがある。<br>
+そういう時には、すでにloggingに定義されているハンドラのコードを参考にすることができる。</p>
+<p>例えば、<code>logging.handlers.SMTPHandler</code>は下記のように定義されている。</p>
+<p><a href="https://github.com/python/cpython/blob/master/Lib/logging/handlers.py">https://github.com/python/cpython/blob/master/Lib/logging/handlers.py</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># ソースコード内のコメントは削除</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SMTPHandler</span>(logging<span style="color:#f92672">.</span>Handler):
+
+    <span style="color:#66d9ef">def</span> __init__(self, mailhost, fromaddr, toaddrs, subject,
+                 credentials<span style="color:#f92672">=</span>None, secure<span style="color:#f92672">=</span>None, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5.0</span>):
+
+        logging<span style="color:#f92672">.</span>Handler<span style="color:#f92672">.</span>__init__(self)
+        <span style="color:#66d9ef">if</span> isinstance(mailhost, (list, tuple)):
+            self<span style="color:#f92672">.</span>mailhost, self<span style="color:#f92672">.</span>mailport <span style="color:#f92672">=</span> mailhost
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>mailhost, self<span style="color:#f92672">.</span>mailport <span style="color:#f92672">=</span> mailhost, None
+        <span style="color:#66d9ef">if</span> isinstance(credentials, (list, tuple)):
+            self<span style="color:#f92672">.</span>username, self<span style="color:#f92672">.</span>password <span style="color:#f92672">=</span> credentials
+        <span style="color:#66d9ef">else</span>:
+            self<span style="color:#f92672">.</span>username <span style="color:#f92672">=</span> None
+        self<span style="color:#f92672">.</span>fromaddr <span style="color:#f92672">=</span> fromaddr
+        <span style="color:#66d9ef">if</span> isinstance(toaddrs, str):
+            toaddrs <span style="color:#f92672">=</span> [toaddrs]
+        self<span style="color:#f92672">.</span>toaddrs <span style="color:#f92672">=</span> toaddrs
+        self<span style="color:#f92672">.</span>subject <span style="color:#f92672">=</span> subject
+        self<span style="color:#f92672">.</span>secure <span style="color:#f92672">=</span> secure
+        self<span style="color:#f92672">.</span>timeout <span style="color:#f92672">=</span> timeout
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">getSubject</span>(self, record):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>subject
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">emit</span>(self, record):
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#f92672">import</span> smtplib
+            <span style="color:#f92672">from</span> email.message <span style="color:#f92672">import</span> EmailMessage
+            <span style="color:#f92672">import</span> email.utils
+
+            port <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>mailport
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> port:
+                port <span style="color:#f92672">=</span> smtplib<span style="color:#f92672">.</span>SMTP_PORT
+            smtp <span style="color:#f92672">=</span> smtplib<span style="color:#f92672">.</span>SMTP(self<span style="color:#f92672">.</span>mailhost, port, timeout<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>timeout)
+            msg <span style="color:#f92672">=</span> EmailMessage()
+            msg[<span style="color:#e6db74">&#39;From&#39;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fromaddr
+            msg[<span style="color:#e6db74">&#39;To&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;,&#39;</span><span style="color:#f92672">.</span>join(self<span style="color:#f92672">.</span>toaddrs)
+            msg[<span style="color:#e6db74">&#39;Subject&#39;</span>] <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>getSubject(record)
+            msg[<span style="color:#e6db74">&#39;Date&#39;</span>] <span style="color:#f92672">=</span> email<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>localtime()
+            msg<span style="color:#f92672">.</span>set_content(self<span style="color:#f92672">.</span>format(record))
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>username:
+                <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>secure <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> None:
+                    smtp<span style="color:#f92672">.</span>ehlo()
+                    smtp<span style="color:#f92672">.</span>starttls(<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>secure)
+                    smtp<span style="color:#f92672">.</span>ehlo()
+                smtp<span style="color:#f92672">.</span>login(self<span style="color:#f92672">.</span>username, self<span style="color:#f92672">.</span>password)
+            smtp<span style="color:#f92672">.</span>send_message(msg)
+            smtp<span style="color:#f92672">.</span>quit()
+        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
+            self<span style="color:#f92672">.</span>handleError(record)
+</code></pre></div><p>これを参考にすると、独自ハンドラを作るには、<code>logging.Handler</code>クラスを継承して、必要に応じて、親クラスのメソッドをオーバーライド、もしくはメソッド追加を行えばよいということが分かる。</p>
+<p>その際、<code>emit</code>メソッドだけは、子クラスでオーバーライドして実装してあげる必要がある。<br>
+もし、これを実装しなければ、必ず<code>NotImplementedError</code>が発生するようになっている。<br>
+<code>emit</code>は、ログの書き込み処理や送信処理を行うメソッドであるので、実装が必要なのはまあ当然である。</p>
+<p>ちなみに、親クラスとなる<code>logging.Handler</code>は、下記のようになっている。</p>
+<p><a href="https://github.com/python/cpython/blob/master/Lib/logging/__init__.py">https://github.com/python/cpython/blob/master/Lib/logging/__init__.py</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># ソースコード内のコメントは削除</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Handler</span>(Filterer):
+
+    <span style="color:#66d9ef">def</span> __init__(self, level<span style="color:#f92672">=</span>NOTSET):
+        Filterer<span style="color:#f92672">.</span>__init__(self)
+        self<span style="color:#f92672">.</span>_name <span style="color:#f92672">=</span> None
+        self<span style="color:#f92672">.</span>level <span style="color:#f92672">=</span> _checkLevel(level)
+        self<span style="color:#f92672">.</span>formatter <span style="color:#f92672">=</span> None
+        _addHandlerRef(self)
+        self<span style="color:#f92672">.</span>createLock()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_name</span>(self):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_name
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set_name</span>(self, name):
+        _acquireLock()
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_name <span style="color:#f92672">in</span> _handlers:
+                <span style="color:#66d9ef">del</span> _handlers[self<span style="color:#f92672">.</span>_name]
+            self<span style="color:#f92672">.</span>_name <span style="color:#f92672">=</span> name
+            <span style="color:#66d9ef">if</span> name:
+                _handlers[name] <span style="color:#f92672">=</span> self
+        <span style="color:#66d9ef">finally</span>:
+            _releaseLock()
+
+    name <span style="color:#f92672">=</span> property(get_name, set_name)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">createLock</span>(self):
+        self<span style="color:#f92672">.</span>lock <span style="color:#f92672">=</span> threading<span style="color:#f92672">.</span>RLock()
+        _register_at_fork_reinit_lock(self)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">acquire</span>(self):
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>lock:
+            self<span style="color:#f92672">.</span>lock<span style="color:#f92672">.</span>acquire()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">release</span>(self):
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>lock:
+            self<span style="color:#f92672">.</span>lock<span style="color:#f92672">.</span>release()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setLevel</span>(self, level):
+        self<span style="color:#f92672">.</span>level <span style="color:#f92672">=</span> _checkLevel(level)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">format</span>(self, record):
+        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>formatter:
+            fmt <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>formatter
+        <span style="color:#66d9ef">else</span>:
+            fmt <span style="color:#f92672">=</span> _defaultFormatter
+        <span style="color:#66d9ef">return</span> fmt<span style="color:#f92672">.</span>format(record)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">emit</span>(self, record):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">NotImplementedError</span>(<span style="color:#e6db74">&#39;emit must be implemented &#39;</span>
+                                  <span style="color:#e6db74">&#39;by Handler subclasses&#39;</span>)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handle</span>(self, record):
+        rv <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>filter(record)
+        <span style="color:#66d9ef">if</span> rv:
+            self<span style="color:#f92672">.</span>acquire()
+            <span style="color:#66d9ef">try</span>:
+                self<span style="color:#f92672">.</span>emit(record)
+            <span style="color:#66d9ef">finally</span>:
+                self<span style="color:#f92672">.</span>release()
+        <span style="color:#66d9ef">return</span> rv
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">setFormatter</span>(self, fmt):
+        self<span style="color:#f92672">.</span>formatter <span style="color:#f92672">=</span> fmt
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flush</span>(self):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">close</span>(self):
+        _acquireLock()
+        <span style="color:#66d9ef">try</span>:
+            <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_name <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>_name <span style="color:#f92672">in</span> _handlers:
+                <span style="color:#66d9ef">del</span> _handlers[self<span style="color:#f92672">.</span>_name]
+        <span style="color:#66d9ef">finally</span>:
+            _releaseLock()
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handleError</span>(self, record):
+        <span style="color:#66d9ef">if</span> raiseExceptions <span style="color:#f92672">and</span> sys<span style="color:#f92672">.</span>stderr:
+            t, v, tb <span style="color:#f92672">=</span> sys<span style="color:#f92672">.</span>exc_info()
+            <span style="color:#66d9ef">try</span>:
+                sys<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;--- Logging error ---</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+                traceback<span style="color:#f92672">.</span>print_exception(t, v, tb, None, sys<span style="color:#f92672">.</span>stderr)
+                sys<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;Call stack:</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+                frame <span style="color:#f92672">=</span> tb<span style="color:#f92672">.</span>tb_frame
+                <span style="color:#66d9ef">while</span> (frame <span style="color:#f92672">and</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>dirname(frame<span style="color:#f92672">.</span>f_code<span style="color:#f92672">.</span>co_filename) <span style="color:#f92672">==</span>
+                       __path__[<span style="color:#ae81ff">0</span>]):
+                    frame <span style="color:#f92672">=</span> frame<span style="color:#f92672">.</span>f_back
+                <span style="color:#66d9ef">if</span> frame:
+                    traceback<span style="color:#f92672">.</span>print_stack(frame, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stderr)
+                <span style="color:#66d9ef">else</span>:
+                    sys<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;Logged from file </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">, line </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (
+                                     record<span style="color:#f92672">.</span>filename, record<span style="color:#f92672">.</span>lineno))
+                <span style="color:#66d9ef">try</span>:
+                    sys<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;Message: </span><span style="color:#e6db74">%r</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+                                     <span style="color:#e6db74">&#39;Arguments: </span><span style="color:#e6db74">%s</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (record<span style="color:#f92672">.</span>msg,
+                                                          record<span style="color:#f92672">.</span>args))
+                <span style="color:#66d9ef">except</span> RecursionError:
+                    <span style="color:#66d9ef">raise</span>
+                <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span>:
+                    sys<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#39;Unable to print the message and arguments&#39;</span>
+                                     <span style="color:#e6db74">&#39; - possible formatting error.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Use the&#39;</span>
+                                     <span style="color:#e6db74">&#39; traceback above to help find the error.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+                                    )
+            <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">OSError</span>:
+                <span style="color:#66d9ef">pass</span>
+            <span style="color:#66d9ef">finally</span>:
+                <span style="color:#66d9ef">del</span> t, v, tb
+
+    <span style="color:#66d9ef">def</span> __repr__(self):
+        level <span style="color:#f92672">=</span> getLevelName(self<span style="color:#f92672">.</span>level)
+        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&lt;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">)&gt;&#39;</span> <span style="color:#f92672">%</span> (self<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__name__, level)
+
+</code></pre></div><p>自分の場合、DBのメール機能を使ってログを送りたかったので、<code>DBMailHandler</code>クラスを作った。</p>
+
+      </div></div>
+  
+  <div class="pagination">
+    <div class="pagination__title">
+      <span
+        class="pagination__title-h">Read other posts</span>
+      <hr />
+    </div>
+    <div class="pagination__buttons">
+      
+      <span class="button previous">
+        <a href="/posts/control/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Control雑感</span>
+        </a>
+      </span>
+      
+      
+    </div>
+  </div>
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>@nowaai</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+<script src="/assets/prism.js"></script>
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
