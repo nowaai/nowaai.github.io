@@ -2,49 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on ご乱心.jp</title>
-    <link>/tags/python/</link>
+    <link>https://nowaai.github.io/tags/python/</link>
     <description>Recent content in Python on ご乱心.jp</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>@nowaai</copyright>
     <lastBuildDate>Thu, 02 Apr 2020 22:37:52 +0900</lastBuildDate>
     
-	<atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nowaai.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>カリー化した関数に型ヒントを与える</title>
-      <link>/posts/curry/</link>
+      <link>https://nowaai.github.io/posts/curry/</link>
       <pubDate>Thu, 02 Apr 2020 22:37:52 +0900</pubDate>
       
-      <guid>/posts/curry/</guid>
+      <guid>https://nowaai.github.io/posts/curry/</guid>
       <description>Pythonの型ヒントに慣れるために、カリー化した関数に型ヒントを与えるというタスクをやってみる。 ちなみに、カリー化とは、複数の引数をとる関数を、一つの引数だけをとる関数のチェーンに変換する操作のこと</description>
     </item>
     
     <item>
       <title>Pythonでイミュータブルオブジェクト</title>
-      <link>/posts/immutable/</link>
+      <link>https://nowaai.github.io/posts/immutable/</link>
       <pubDate>Wed, 25 Mar 2020 22:37:52 +0900</pubDate>
       
-      <guid>/posts/immutable/</guid>
+      <guid>https://nowaai.github.io/posts/immutable/</guid>
       <description>Pythonでコレクションを扱っていると、ハッシュ可能なオブジェクトの使用を求められることがままある。 例えば、辞書のキーはハッシュ可能なオブジェクトでないといけないし、集合の要素もハッシュ可能でなけれ</description>
     </item>
     
     <item>
       <title>場当たり的な例外処理</title>
-      <link>/posts/exception/</link>
+      <link>https://nowaai.github.io/posts/exception/</link>
       <pubDate>Fri, 21 Feb 2020 22:37:52 +0900</pubDate>
       
-      <guid>/posts/exception/</guid>
+      <guid>https://nowaai.github.io/posts/exception/</guid>
       <description>定期的に動かすので、ある程度きちんとプログラムを書かないといけないけど、そんなに丁寧に例外処理を書いている余裕はないぞというケースがある。 そういう時、実行スクリプトでは、このように雑に例外処理を行うこ</description>
     </item>
     
     <item>
       <title>Pythonで独自のロギングハンドラ</title>
-      <link>/posts/logging/</link>
+      <link>https://nowaai.github.io/posts/logging/</link>
       <pubDate>Sat, 01 Feb 2020 22:37:52 +0900</pubDate>
       
-      <guid>/posts/logging/</guid>
+      <guid>https://nowaai.github.io/posts/logging/</guid>
       <description>Pythonのloggingを利用していると、独自のハンドラを作りたくなるときがある。 そういう時には、すでにloggingに定義されているハンドラのコードを参考にすることができる。 例えば、loggin</description>
     </item>
     
