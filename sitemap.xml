@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://nowaai.github.io/posts/</loc>
-    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+    <lastmod>2020-04-26T13:24:04+09:00</lastmod>
     
     <changefreq>daily</changefreq>
     
@@ -14,7 +14,7 @@
   
   <url>
     <loc>https://nowaai.github.io/tags/r/</loc>
-    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+    <lastmod>2020-04-26T13:24:04+09:00</lastmod>
     
     <changefreq>daily</changefreq>
     
@@ -23,8 +23,8 @@
   </url>
   
   <url>
-    <loc>https://nowaai.github.io/posts/r-operator/</loc>
-    <lastmod>2020-04-26T00:04:55+09:00</lastmod>
+    <loc>https://nowaai.github.io/tags/rust/</loc>
+    <lastmod>2020-04-26T13:24:04+09:00</lastmod>
     
     <changefreq>daily</changefreq>
     
@@ -34,6 +34,26 @@
   
   <url>
     <loc>https://nowaai.github.io/tags/</loc>
+    <lastmod>2020-04-26T13:24:04+09:00</lastmod>
+    
+    <changefreq>daily</changefreq>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>https://nowaai.github.io/posts/wasm-othello/</loc>
+    <lastmod>2020-04-26T13:24:04+09:00</lastmod>
+    
+    <changefreq>daily</changefreq>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>https://nowaai.github.io/posts/r-operator/</loc>
     <lastmod>2020-04-26T00:04:55+09:00</lastmod>
     
     <changefreq>daily</changefreq>

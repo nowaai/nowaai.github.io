@@ -13,6 +13,15 @@
     
     
     <item>
+      <title>WebAssemblyでオセロゲーム</title>
+      <link>https://nowaai.github.io/posts/wasm-othello/</link>
+      <pubDate>Sun, 26 Apr 2020 13:24:04 +0900</pubDate>
+      
+      <guid>https://nowaai.github.io/posts/wasm-othello/</guid>
+      <description>以前からRustが気になっていたので、慣れも含めてRustでオセロゲームを作ってみた。 https://nowaai.github.io/wasm-othello/ コンソールゲームでもいいのだが、やっぱりブラウザ上で遊びたい。 そこで、WebAssemblyを吐いて、それをブラ</description>
+    </item>
+    
+    <item>
       <title>Rの自作パッケージ内で依存パッケージを読み込む方法（Rで顔文字演算子）</title>
       <link>https://nowaai.github.io/posts/r-operator/</link>
       <pubDate>Sun, 26 Apr 2020 00:04:55 +0900</pubDate>
