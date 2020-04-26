@@ -160,7 +160,7 @@
 しかし、Rustの厳格な所有権システムのおかげで、クリックイベント周りのコードが参照カウンタまみれになってしまい、動いたもののあえなく断念。</p>
 <p>（<a href="https://github.com/xuu/wasm-tetris">wasm-tetris</a>もそうしているようだが、ツラさがうかがえる&hellip;）</p>
 <p>次に、オセロの計算エンジンはWebAssemblyに、Canvasの描画はJavascriptに担当させ、役割分担させることにした。
-ボードの状態管理と裏返る石の計算はWebAssemblyが行い、描画に必要な石のデータだけをJavascriptの方に送る。
+ボードの状態管理と裏返る石の計算はWebAssemblyが行い、描画に必要な石の差分データだけをJavascriptの方に送る。
 これで、GUIのコードと計算部分のコードが切り分けられ、すっきりした。</p>
 <p><a href="https://github.com/nowaai/wasm-othello">https://github.com/nowaai/wasm-othello</a></p>
 <p>所有権周りでコンパイラに怒られながら書き上げたが、まあだ慣れた感じはしない。<br>
