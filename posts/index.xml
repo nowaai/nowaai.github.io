@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>@nowaai</copyright>
-    <lastBuildDate>Sun, 26 Apr 2020 13:24:04 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 13:24:04 +0900</lastBuildDate>
     
 	<atom:link href="https://nowaai.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>将棋ウォーズとの付き合い方</title>
+      <link>https://nowaai.github.io/posts/shougi-wars/</link>
+      <pubDate>Sat, 09 May 2020 13:24:04 +0900</pubDate>
+      
+      <guid>https://nowaai.github.io/posts/shougi-wars/</guid>
+      <description>将棋ウォーズにもうかれこれ8か月ほど取り組んでいる。 長らく続けてようやく2級まで来たが、学習スピードとしてこれは遅いのか早いのか、どっちなのだろう。 基本的に研究らしい研究はしないという方針でやっている</description>
+    </item>
     
     <item>
       <title>WebAssemblyでオセロゲーム</title>
